@@ -13,20 +13,20 @@ disp('Recording finished')
 x = getaudiodata(recObj);
 
 %% تحميل IR للغرفة
-% load('room.mat');   % نفس الملف المعطى في مشروع AEC لإزالة أثر تعدد المسارات
-% h = room(:);% 
+load('room.mat');   % نفس الملف المعطى في مشروع AEC لإزالة أثر تعدد المسارات
+h = room(:);% 
 
 %( أثر الغرفة( إضافة الريفيرب
-% y = conv(x,h); %  y(n)=x(n)∗h(n)
-% y = y(1:length(x));
+y = conv(x,h); %  y(n)=x(n)∗h(n)
+y = y(1:length(x));
 %% room.mat طريقة2لإضافةأثر الغرفة صناعيا بدل
  %IR غرفة صنعية
-t = 0:1/fs:0.5;
-room = exp(-6*t)';
-room(1) = 1;
+% t = 0:1/fs:0.5;
+% room = exp(-6*t)';
+% room(1) = 1;
 
 %%reverb section إضافة ريفيرب
-y = conv(x,room); % y(n)=x(n)∗h(n)
+%y = conv(x,room); % y(n)=x(n)∗h(n)
 
 %% EQUALIZER SECTION يغيّر توزيع الطاقة على الترددات اي هو فلتر يغير السبكتروغرام
 disp('Choose EQ mode:')
